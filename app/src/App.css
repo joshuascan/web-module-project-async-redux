@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: deepskyblue;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 25px auto;
+  align-items: center;
+}
+
+select {
+  width: 150px;
+}
+
+input {
+  width: 100px;
+  margin: 10px;
+}

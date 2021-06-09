@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { getJoke } from "../actions";
+import { getJoke, selectCategory } from "../actions";
 
 const Joke = (props) => {
-  const { joke, isFetching, error } = props;
+  const { joke, isFetching, error, categories } = props;
+  const [category, setCategory] = useState("");
   useEffect(() => {
-    props.dispatch(getJoke());
+    props.dispatch(getJoke(""));
+    console.log("before: ", category);
   }, []);
 
-  const handleClick = () => {
-    props.dispatch(getJoke());
+  const handleChange = (e) => {
+    setCategory(e.target.value);
+  };
+  const handleSubmit = (category) => {
+    props.dispatch(getJoke(category));
   };
 
   if (isFetching) {
@@ -24,9 +29,21 @@ const Joke = (props) => {
   return (
     <div>
       <p>{joke}</p>
-      <div>
-        <button onClick={handleClick}>Get new joke</button>
-      </div>
+      <form className="search">
+        <select onChange={handleChange} name="categories" id="categories">
+          <option value="">-- Any --</option>
+          {categories.map((category, index) => (
+            <option value={`?category=${category}`} key={index}>
+              {category}
+            </option>
+          ))}
+        </select>
+        <input
+          type="submit"
+          onClick={() => handleSubmit(category)}
+          value="Get New Joke"
+        />
+      </form>
     </div>
   );
 };
@@ -36,6 +53,7 @@ const mapStateToProps = (state) => {
     joke: state.joke,
     isFetching: state.isFetching,
     error: state.error,
+    categories: state.categories,
   };
 };
 
