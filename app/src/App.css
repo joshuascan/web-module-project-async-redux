@@ -41,6 +41,24 @@ body {
   background-color: deepskyblue;
 }
 
+.joke-text {
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  width: 50%;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 40px;
+}
+
+p {
+  font-size: 24px;
+  margin-bottom: 40px;
+  padding: 15px;
+  font-style: italic;
+}
+
 .search {
   display: flex;
   flex-direction: column;
@@ -50,10 +68,12 @@ body {
 }
 
 select {
-  width: 150px;
+  width: 220px;
+  font-size: 18px;
 }
 
 input {
-  width: 100px;
-  margin: 10px;
+  width: 180px;
+  margin: 15px;
+  font-size: 20px;
 }

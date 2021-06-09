@@ -14,6 +14,7 @@ const Joke = (props) => {
   const handleChange = (e) => {
     setCategory(e.target.value);
   };
+
   const handleSubmit = (category) => {
     props.dispatch(getJoke(category));
   };
@@ -28,10 +29,12 @@ const Joke = (props) => {
 
   return (
     <div>
-      <p>{joke}</p>
+      <div className="joke-text">
+        <p>{joke}</p>
+      </div>
       <form className="search">
         <select onChange={handleChange} name="categories" id="categories">
-          <option value="">-- Any --</option>
+          <option value="">-- Select a Category --</option>
           {categories.map((category, index) => (
             <option value={`?category=${category}`} key={index}>
               {category}
