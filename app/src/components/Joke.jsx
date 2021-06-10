@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { getJoke, selectCategory } from "../actions";
 
 const Joke = (props) => {
-  const { joke, isFetching, error, categories } = props;
-  const [category, setCategory] = useState("");
+  const { joke, isFetching, error, categories, category } = props;
   useEffect(() => {
     props.dispatch(getJoke(""));
-    console.log("before: ", category);
   }, []);
 
   const handleChange = (e) => {
-    setCategory(e.target.value);
+    props.dispatch(selectCategory(e.target.value));
+    // console.log("selected: ", e.target.value);
   };
 
   const handleSubmit = (category) => {
+    // console.log("category: ", category);
     props.dispatch(getJoke(category));
   };
 
@@ -33,7 +33,12 @@ const Joke = (props) => {
         <p>{joke}</p>
       </div>
       <form className="search">
-        <select onChange={handleChange} name="categories" id="categories">
+        <select
+          onChange={handleChange}
+          name="categories"
+          id="categories"
+          value={category}
+        >
           <option value="">-- Select a Category --</option>
           {categories.map((category, index) => (
             <option value={`?category=${category}`} key={index}>
@@ -57,6 +62,7 @@ const mapStateToProps = (state) => {
     isFetching: state.isFetching,
     error: state.error,
     categories: state.categories,
+    category: state.category,
   };
 };
 
