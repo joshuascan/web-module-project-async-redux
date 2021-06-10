@@ -49,7 +49,8 @@ body {
 
 h1 {
   font-size: 40px;
-  margin: 40px;
+  margin: 60px;
+  text-decoration: underline;
 }
 
 p {
@@ -63,17 +64,30 @@ p {
   display: flex;
   flex-direction: column;
   width: 40%;
-  margin: 25px auto;
+  margin: 40px auto;
+  padding: 10px;
   align-items: center;
 }
 
 select {
+  background-color: lightskyblue;
   width: 220px;
   font-size: 18px;
+  border: 1px solid black;
+  padding: 3px;
+  outline: none;
 }
 
 input {
   width: 180px;
   margin: 15px;
   font-size: 20px;
+  border: none;
+  background-color: coral;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+input:active {
+  background-color: rgb(206, 103, 65);
 }
