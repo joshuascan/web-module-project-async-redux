@@ -14,7 +14,7 @@ const Joke = (props) => {
     // console.log("selected: ", e.target.value);
   };
 
-  const handleSubmit = (category) => {
+  const handleSubmit = () => {
     // console.log("category: ", category);
     props.dispatch(getJoke(category));
   };
@@ -41,16 +41,16 @@ const Joke = (props) => {
         >
           <option value="">-- Select a Category --</option>
           {categories.map((category, index) => (
-            <option value={`?category=${category}`} key={index}>
+            <option
+              className="category"
+              value={`?category=${category}`}
+              key={index}
+            >
               {category}
             </option>
           ))}
         </select>
-        <input
-          type="submit"
-          onClick={() => handleSubmit(category)}
-          value="Get New Joke"
-        />
+        <input type="submit" onClick={handleSubmit} value="Get New Joke" />
       </form>
     </div>
   );

@@ -91,3 +91,8 @@ input {
 input:active {
   background-color: rgb(206, 103, 65);
 }
+
+.category {
+  text-transform: capitalize;
+  color: red;
+}
